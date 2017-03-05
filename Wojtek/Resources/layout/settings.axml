@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:text="Liczba pobieranych ostatnich wyników:"
+        android:textSize="14sp"
+        android:layout_marginTop="10px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+          <TextView
+              android:text="Ustawia liczbę wyświetlanych wyników w zakładce 'wyniki'"
+              android:textSize="10sp"
+              android:layout_marginTop="0px"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/textView1" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="60sp"
+                    android:numeric="integer"
+                    android:id="@+id/editAmount"/>
+  
+  
+  
+  
+    <TextView
+        android:text="Wartość dla ostrzeżenia:"
+        android:textSize="14sp"
+        android:layout_marginTop="15px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+            <TextView
+                android:text="Ustawia wartość ostrzeżenia (kolor czerwony i pomarańczowy w zakładce wyników oraz czerwona linia na wykresie)"
+                android:textSize="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1" />
+                    <EditText
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="60sp"
+                        android:numeric="integer"
+                        android:id="@+id/editAlert" />
+  
+  
+    <TextView
+        android:text="Motyw kolorystyczny:"
+        android:textSize="14sp"
+        android:layout_marginTop="15px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+            <TextView
+                android:text="Wybiera motyw kolorystyczny (wymaga restartu aplikacji)"
+                android:textSize="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1" />
+                      <RadioGroup
+                          android:minWidth="25px"
+                          android:minHeight="25px"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/color_theme_button"
+                          android:layout_marginTop="15px">
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:checked="true"
+                              android:text="Tradycyjny"
+                              android:textSize="10sp"
+                              android:id="@+id/radioButton1" />
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="Jasny"
+                              android:textSize="10sp"
+                              android:id="@+id/radioButton2" />
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="Ciemny"
+                              android:textSize="10sp"
+                              android:id="@+id/radioButton3" />
+                      </RadioGroup>
+  
+    <Button
+        android:text="Zapisz ustawienia"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10px"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_settings" />
+  
+</LinearLayout>
