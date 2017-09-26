@@ -8,7 +8,6 @@ namespace Wojtek
 {
      class plot_model: MainActivity
     {
-
         public PlotModel CreatePlotModel()
         {
             var plotModel = new PlotModel

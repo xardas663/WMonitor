@@ -15,17 +15,18 @@ using System.Globalization;
 namespace Wojtek
 {
     [Activity(Label = "WiMonitor", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@drawable/icon")]
-    
-    public class MainActivity : FragmentActivity
+    public class ResultsRepository
     {
-       
-         
-        IFormatProvider culture = new CultureInfo("en-US", true); 
-              
-        private static List<Records> mResults = new List<Records>();
-        private static List<Records> mAverage = new List<Records>();
-        private static List<Records> mResults_chart = new List<Records>();
+        public List<Records> Results = new List<Records>();
+        public List<Records> Average = new List<Records>();
+        public List<Records> Results_chart = new List<Records>();
+    }
 
+
+    public class MainActivity : FragmentActivity
+    {       
+         
+        IFormatProvider culture = new CultureInfo("en-US", true);           
         private static DateTime today = DateTime.Now;
         private static string today_string;       
         public static int alert;
@@ -37,51 +38,11 @@ namespace Wojtek
         MyAdapter adapter_avg;
 
         #region set&get methods
-        public static List<Records> MResults
-        {
-            get
-            {
-                return mResults;
-            }
-
-            set
-            {
-                mResults = value;
-            }
-        }
-
-        protected static List<Records> MAverage
-        {
-            get
-            {
-                return mAverage;
-            }
-
-            set
-            {
-                mAverage = value;
-            }
-        }
-
-        protected static List<Records> MResults_chart
-        {
-            get
-            {
-                return mResults_chart;
-            }
-
-            set
-            {
-                mResults_chart = value;
-            }
-        }
+       
 
         protected static DateTime Today
         {
-            get
-            {
-                return today;
-            }
+            get => today;
 
             set
             {

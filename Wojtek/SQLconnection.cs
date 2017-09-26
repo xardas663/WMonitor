@@ -131,7 +131,7 @@ namespace Wojtek
                                 value = Convert.ToDouble(reader[0]),
                                 actualtime = Convert.ToDateTime(reader[1]),
                                 string_actualtime = reader[1].ToString(),
-                                actualdate = reader[2].ToString()
+                                Actualdate = reader[2].ToString()
                             });
 
                         }
@@ -163,7 +163,7 @@ namespace Wojtek
                                 value = Convert.ToDouble(reader[0]),
                                 actualtime = Convert.ToDateTime(reader[1]),
                                 string_actualtime = reader[1].ToString(),
-                                actualdate = reader[2].ToString()
+                                Actualdate = reader[2].ToString()
 
                             });
 
@@ -185,7 +185,7 @@ namespace Wojtek
                             {
 
                                 value = Convert.ToDouble(reader[0]),
-                                actualdate = reader[2].ToString(),
+                                Actualdate = reader[2].ToString(),
                                 string_actualtime = reader[1].ToString(),
                                 actualtime = Convert.ToDateTime(reader[1])
                             });

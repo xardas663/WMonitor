@@ -51,7 +51,7 @@ namespace Wojtek
             TextView txtText = row.FindViewById<TextView>(Resource.Id.txtText);
             txtText.Text = mResult[position].value+" °C";
             TextView txtText2 = row.FindViewById<TextView>(Resource.Id.txtText2);
-            txtText2.Text = "Data: "+mResult[position].actualdate;
+            txtText2.Text = "Data: "+mResult[position].Actualdate;
             TextView txtText1 = row.FindViewById<TextView>(Resource.Id.txtText1);
             txtText1.Text = "Godzina: "+mResult[position].string_actualtime;
             if (mResult[position].value >= MainActivity.Alert) { row.SetBackgroundColor(Android.Graphics.Color.Red); }

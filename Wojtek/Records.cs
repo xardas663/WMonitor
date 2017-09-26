@@ -15,7 +15,7 @@ namespace Wojtek
    public class Records
     {
        
-        public string actualdate { get; set; }
+        public string Actualdate { get; set; }
         public DateTime actualtime { get; set; }
         public string string_actualtime { get; set; }
 
