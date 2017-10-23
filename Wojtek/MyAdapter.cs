@@ -5,12 +5,12 @@ using Android.Widget;
 
 namespace Wojtek
 {
-    class MyAdapter : BaseAdapter<Records>
+    public class ListViewAdapter : BaseAdapter<Records>
     {
         public List<Records> mResult;
         private Context mContext;
 
-        public MyAdapter(Context context, List<Records> result)
+        public ListViewAdapter(Context context, List<Records> result)
         {
             mResult = result;
             mContext = context;

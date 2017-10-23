@@ -14,8 +14,7 @@ namespace Wojtek
         }
 
         public GenericViewPagerFragment()
-        {
-            
+        {           
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -24,11 +23,9 @@ namespace Wojtek
             return _view(inflater, container, savedInstanceState);
         }
 
-
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
         }
-
     }
 }

@@ -34,8 +34,8 @@ namespace Wojtek
         private static int amount;
 
         SwipeRefreshLayout mSwipeRefreshLayout;
-        MyAdapter adapter_results;
-        MyAdapter adapter_avg;
+        ListViewAdapter adapter_results;
+        ListViewAdapter adapter_avg;
 
         #region set&get methods
        
@@ -132,7 +132,7 @@ namespace Wojtek
             {
               
                 var view = i.Inflate(Resource.Layout.tab, v, false);
-                adapter_results = new MyAdapter(this, MResults);
+                adapter_results = new ListViewAdapter(this, MResults);
                 var listView = view.FindViewById<ListView>(Resource.Id.myListView);             
                 listView.Adapter = adapter_results;
                 refresh(view);
@@ -145,7 +145,7 @@ namespace Wojtek
             {
                
                 var view = i.Inflate(Resource.Layout.tab, v, false);
-                adapter_avg = new MyAdapter(this, MAverage);
+                adapter_avg = new ListViewAdapter(this, MAverage);
                 var listView = view.FindViewById<ListView>(Resource.Id.myListView);             
                 listView.Adapter = adapter_avg;
                 refresh(view);                          
@@ -158,9 +158,9 @@ namespace Wojtek
                 
                 var view = i.Inflate(Resource.Layout.chart, v, false);
                 PlotView plotview = view.FindViewById<PlotView>(Resource.Id.plot_view);
-                plot_model model = new plot_model();
+                PlotBuilder model = new PlotBuilder();
                 plotview.Model = model.CreatePlotModel();
-             
+                
                 return view;
             });
 
@@ -172,8 +172,7 @@ namespace Wojtek
                 EditText alert = view2.FindViewById<EditText>(Resource.Id.editAlert);
                 button.Click += Button_Click;
                 amount.Text = Amount.ToString();
-                alert.Text=Alert.ToString();
-                            
+                alert.Text=Alert.ToString();                           
                
 
                 return view2;
@@ -196,21 +195,16 @@ namespace Wojtek
         private void Button_Click(object sender, EventArgs e)
         {
 
-            EditText amount = this.FindViewById<EditText>(Resource.Id.editAmount);
-            EditText alert = this.FindViewById<EditText>(Resource.Id.editAlert);
-            RadioButton radioButton1 = this.FindViewById<RadioButton>(Resource.Id.radioButton1);
-            RadioButton radioButton2 = this.FindViewById<RadioButton>(Resource.Id.radioButton2);
-            RadioButton radioButton3 = this.FindViewById<RadioButton>(Resource.Id.radioButton3);
-            RadioGroup color_theme_radio_button = this.FindViewById<RadioGroup>(Resource.Id.color_theme_button);
-
-
+            EditText amount = FindViewById<EditText>(Resource.Id.editAmount);
+            EditText alert = FindViewById<EditText>(Resource.Id.editAlert);
+            RadioButton radioButton1 = FindViewById<RadioButton>(Resource.Id.radioButton1);
+            RadioButton radioButton2 = FindViewById<RadioButton>(Resource.Id.radioButton2);
+            RadioButton radioButton3 = FindViewById<RadioButton>(Resource.Id.radioButton3);
+            RadioGroup color_theme_radio_button = FindViewById<RadioGroup>(Resource.Id.color_theme_button);
 
             if (color_theme_radio_button.CheckedRadioButtonId == Resource.Id.radioButton1) Color_theme = 1;
             if (color_theme_radio_button.CheckedRadioButtonId == Resource.Id.radioButton2) Color_theme = 2;
             if (color_theme_radio_button.CheckedRadioButtonId == Resource.Id.radioButton3) Color_theme = 3;
-
-
-
 
             Alert = Convert.ToInt16(alert.Text);
             Amount = Convert.ToInt16(amount.Text);
@@ -219,13 +213,6 @@ namespace Wojtek
             SQLconnection.connect(true);
             Toast.MakeText(this, "Pamiętaj, że niektóre zmiany wymagają ponownego uruchomienia aplikacji", ToastLength.Short).Show();
         }
-
-        private void Button_Click1(object sender, EventArgs e)
-        {
-           
-            
-        }
-
       
 
         private void MSwipeRefreshLayout_Refresh(object sender, EventArgs e)
@@ -237,10 +224,7 @@ namespace Wojtek
         }
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-             
-
+        {            
             RunOnUiThread(() =>
             {
                 adapter_avg.NotifyDataSetChanged();
@@ -249,30 +233,19 @@ namespace Wojtek
                 mSwipeRefreshLayout.Refreshing = false;
 
             });
-
         }
 
-
-
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            MResults.Clear();
-            MResults_chart.Clear();
-            MAverage.Clear();
+        {            
             SQLconnection.connect(false);
-
-
         }     
         
-
         public void refresh(Android.Views.View view)
         {
-           
             mSwipeRefreshLayout = view.FindViewById<SwipeRefreshLayout>(Resource.Id.swipeLayout);
             mSwipeRefreshLayout.SetColorScheme(Android.Resource.Color.HoloBlueBright, Android.Resource.Color.HoloBlueDark, Android.Resource.Color.HoloGreenDark, Android.Resource.Color.HoloRedLight);
             mSwipeRefreshLayout.Refresh += MSwipeRefreshLayout_Refresh;
         }
-
     }
 }
 

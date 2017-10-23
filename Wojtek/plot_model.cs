@@ -6,11 +6,13 @@ using OxyPlot.Series;
 
 namespace Wojtek
 {
-     class plot_model: MainActivity
+    class PlotBuilder
     {
-        public PlotModel CreatePlotModel()
+        PlotModel plotModel;
+        public LineSeries average, alert, results;
+        public PlotBuilder()
         {
-            var plotModel = new PlotModel
+            plotModel = new PlotModel
             {
                 Title = "Przebieg wyników w funkcji czasu dla dnia: " + Today.ToString("yyyy-MM-dd"),
                 TitleHorizontalAlignment = TitleHorizontalAlignment.CenteredWithinView,
@@ -22,9 +24,10 @@ namespace Wojtek
                 LegendTitle = "Legenda",
                 LegendOrientation = LegendOrientation.Horizontal,
                 LegendTitleFontSize = 14
-
-            };
-
+            };            
+        }
+        public void AddAxes()
+        {
             plotModel.Axes.Add(new DateTimeAxis
             {
                 Position = AxisPosition.Bottom,
@@ -44,9 +47,12 @@ namespace Wojtek
                 MajorGridlineStyle = OxyPlot.LineStyle.Solid
             });
 
+        }
 
 
-            var results = new LineSeries
+        public void AddLineSeries()
+        {
+            results = new LineSeries
             {
                 Title = "Wyniki pomiarów",
                 MarkerType = MarkerType.Circle,
@@ -55,7 +61,7 @@ namespace Wojtek
                 Color = OxyColors.DarkCyan
             };
 
-            var average = new LineSeries
+            average = new LineSeries
             {
                 Title = "Œrednia",
                 MarkerType = MarkerType.Circle,
@@ -63,8 +69,8 @@ namespace Wojtek
                 MarkerStroke = OxyColors.White,
                 Color = OxyColors.MediumVioletRed,
             };
-            
-            var alert = new LineSeries
+
+            alert = new LineSeries
             {
                 Title = "Stan krytyczny",
                 MarkerType = MarkerType.Circle,
@@ -72,9 +78,11 @@ namespace Wojtek
                 MarkerStroke = OxyColors.White,
                 Color = OxyColors.Red,
             };
+        }
 
-
-
+            
+        public void AddData()
+        {
             int i = 0;
 
             foreach (var item in MResults_chart)
@@ -88,13 +96,12 @@ namespace Wojtek
                 i++;
             }
 
-
             plotModel.Series.Add(average);
             plotModel.Series.Add(results);
             plotModel.Series.Add(alert);
+        }           
 
-            return plotModel;
-        }
-
+           
     }
+
 }
